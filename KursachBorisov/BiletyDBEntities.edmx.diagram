@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="344a3115351e457cbae67529967aa2fd" Name="Diagram1">
+        <EntityTypeShape EntityType="BiletyBDModel.Colleges" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BiletyBDModel.Comisions" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BiletyBDModel.Directors" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BiletyBDModel.Questions" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BiletyBDModel.Specialities" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BiletyBDModel.Subjects" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="BiletyBDModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BiletyBDModel.Teachers" Width="1.5" PointX="6.625" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BiletyBDModel.Tickets" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BiletyBDModel.Users" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="BiletyBDModel.FK_Colleges_Directors" ManuallyRouted="false" />
+        <AssociationConnector Association="BiletyBDModel.FK_Tickets_Colleges" ManuallyRouted="false" />
+        <AssociationConnector Association="BiletyBDModel.FK_Questions_Subjects" ManuallyRouted="false" />
+        <AssociationConnector Association="BiletyBDModel.FK_Tickets_Specialities" ManuallyRouted="false" />
+        <AssociationConnector Association="BiletyBDModel.FK_Tickets_Teachers" ManuallyRouted="false" />
+        <AssociationConnector Association="BiletyBDModel.Comission_Teachers" ManuallyRouted="false" />
+        <AssociationConnector Association="BiletyBDModel.Tickets_Questions" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

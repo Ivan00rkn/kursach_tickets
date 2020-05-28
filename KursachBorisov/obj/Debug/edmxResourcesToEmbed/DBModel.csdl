@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BiletyBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Colleges">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Director_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Directors" Relationship="Self.FK_Colleges_Directors" FromRole="Colleges" ToRole="Directors" />
+    <NavigationProperty Name="Tickets" Relationship="Self.FK_Tickets_Colleges" FromRole="Colleges" ToRole="Tickets" />
+  </EntityType>
+  <EntityType Name="Comisions">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Teacher1_ID" Type="Int32" Nullable="false" />
+    <Property Name="Teacher2_ID" Type="Int32" />
+    <Property Name="Teacher3_ID" Type="Int32" />
+    <NavigationProperty Name="Teachers" Relationship="Self.FK_Comisions_Teachers" FromRole="Comisions" ToRole="Teachers" />
+    <NavigationProperty Name="Teachers1" Relationship="Self.FK_Comisions_Teachers1" FromRole="Comisions" ToRole="Teachers" />
+    <NavigationProperty Name="Teachers2" Relationship="Self.FK_Comisions_Teachers2" FromRole="Comisions" ToRole="Teachers" />
+  </EntityType>
+  <EntityType Name="Directors">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Colleges" Relationship="Self.FK_Colleges_Directors" FromRole="Directors" ToRole="Colleges" />
+  </EntityType>
+  <EntityType Name="Questions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Tickets" Relationship="Self.FK_Tickets_Questions" FromRole="Questions" ToRole="Tickets" />
+    <NavigationProperty Name="Tickets1" Relationship="Self.FK_Tickets_Questions1" FromRole="Questions" ToRole="Tickets" />
+    <NavigationProperty Name="Tickets2" Relationship="Self.FK_Tickets_Questions2" FromRole="Questions" ToRole="Tickets" />
+    <Property Name="Subject_ID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Subjects">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Tickets" Relationship="Self.FK_Tickets_Subjects" FromRole="Subjects" ToRole="Tickets" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Teachers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Subject_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Comisions" Relationship="Self.FK_Comisions_Teachers" FromRole="Teachers" ToRole="Comisions" />
+    <NavigationProperty Name="Comisions1" Relationship="Self.FK_Comisions_Teachers1" FromRole="Teachers" ToRole="Comisions" />
+    <NavigationProperty Name="Comisions2" Relationship="Self.FK_Comisions_Teachers2" FromRole="Teachers" ToRole="Comisions" />
+    <NavigationProperty Name="Tickets" Relationship="Self.FK_Tickets_Teachers" FromRole="Teachers" ToRole="Tickets" />
+  </EntityType>
+  <EntityType Name="Tickets">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Subject_ID" Type="Int32" Nullable="false" />
+    <Property Name="Teacher_ID" Type="Int32" Nullable="false" />
+    <Property Name="Comision_ID" Type="Int32" Nullable="false" />
+    <Property Name="Question1_ID" Type="Int32" Nullable="false" />
+    <Property Name="Question2_ID" Type="Int32" />
+    <Property Name="Question3_ID" Type="Int32" />
+    <Property Name="Colledge_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Colleges" Relationship="Self.FK_Tickets_Colleges" FromRole="Tickets" ToRole="Colleges" />
+    <NavigationProperty Name="Questions" Relationship="Self.FK_Tickets_Questions" FromRole="Tickets" ToRole="Questions" />
+    <NavigationProperty Name="Questions1" Relationship="Self.FK_Tickets_Questions1" FromRole="Tickets" ToRole="Questions" />
+    <NavigationProperty Name="Questions2" Relationship="Self.FK_Tickets_Questions2" FromRole="Tickets" ToRole="Questions" />
+    <NavigationProperty Name="Subjects" Relationship="Self.FK_Tickets_Subjects" FromRole="Tickets" ToRole="Subjects" />
+    <NavigationProperty Name="Teachers" Relationship="Self.FK_Tickets_Teachers" FromRole="Tickets" ToRole="Teachers" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Login" />
+      <PropertyRef Name="Password" />
+    </Key>
+    <Property Name="Login" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Colleges_Directors">
+    <End Role="Directors" Type="Self.Directors" Multiplicity="1" />
+    <End Role="Colleges" Type="Self.Colleges" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Directors">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Colleges">
+        <PropertyRef Name="Director_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tickets_Colleges">
+    <End Role="Colleges" Type="Self.Colleges" Multiplicity="1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Colleges">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="Colledge_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comisions_Teachers">
+    <End Role="Teachers" Type="Self.Teachers" Multiplicity="1" />
+    <End Role="Comisions" Type="Self.Comisions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teachers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comisions">
+        <PropertyRef Name="Teacher1_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comisions_Teachers1">
+    <End Role="Teachers" Type="Self.Teachers" Multiplicity="0..1" />
+    <End Role="Comisions" Type="Self.Comisions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teachers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comisions">
+        <PropertyRef Name="Teacher2_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comisions_Teachers2">
+    <End Role="Teachers" Type="Self.Teachers" Multiplicity="0..1" />
+    <End Role="Comisions" Type="Self.Comisions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teachers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comisions">
+        <PropertyRef Name="Teacher3_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tickets_Questions">
+    <End Role="Questions" Type="Self.Questions" Multiplicity="1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Questions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="Question1_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tickets_Questions1">
+    <End Role="Questions" Type="Self.Questions" Multiplicity="0..1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Questions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="Question2_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tickets_Questions2">
+    <End Role="Questions" Type="Self.Questions" Multiplicity="0..1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Questions">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="Question3_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tickets_Subjects">
+    <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subjects">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="Subject_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tickets_Teachers">
+    <End Role="Teachers" Type="Self.Teachers" Multiplicity="1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teachers">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="Teacher_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BiletyBDEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Colleges" EntityType="Self.Colleges" />
+    <EntitySet Name="Comisions" EntityType="Self.Comisions" />
+    <EntitySet Name="Directors" EntityType="Self.Directors" />
+    <EntitySet Name="Questions" EntityType="Self.Questions" />
+    <EntitySet Name="Subjects" EntityType="Self.Subjects" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Teachers" EntityType="Self.Teachers" />
+    <EntitySet Name="Tickets" EntityType="Self.Tickets" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK_Colleges_Directors" Association="Self.FK_Colleges_Directors">
+      <End Role="Directors" EntitySet="Directors" />
+      <End Role="Colleges" EntitySet="Colleges" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tickets_Colleges" Association="Self.FK_Tickets_Colleges">
+      <End Role="Colleges" EntitySet="Colleges" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comisions_Teachers" Association="Self.FK_Comisions_Teachers">
+      <End Role="Teachers" EntitySet="Teachers" />
+      <End Role="Comisions" EntitySet="Comisions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comisions_Teachers1" Association="Self.FK_Comisions_Teachers1">
+      <End Role="Teachers" EntitySet="Teachers" />
+      <End Role="Comisions" EntitySet="Comisions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comisions_Teachers2" Association="Self.FK_Comisions_Teachers2">
+      <End Role="Teachers" EntitySet="Teachers" />
+      <End Role="Comisions" EntitySet="Comisions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tickets_Questions" Association="Self.FK_Tickets_Questions">
+      <End Role="Questions" EntitySet="Questions" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tickets_Questions1" Association="Self.FK_Tickets_Questions1">
+      <End Role="Questions" EntitySet="Questions" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tickets_Questions2" Association="Self.FK_Tickets_Questions2">
+      <End Role="Questions" EntitySet="Questions" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tickets_Subjects" Association="Self.FK_Tickets_Subjects">
+      <End Role="Subjects" EntitySet="Subjects" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tickets_Teachers" Association="Self.FK_Tickets_Teachers">
+      <End Role="Teachers" EntitySet="Teachers" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
